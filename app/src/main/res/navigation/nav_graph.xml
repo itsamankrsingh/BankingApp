@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/customerFragment">
+
+    <fragment
+        android:id="@+id/customerFragment"
+        android:name="com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerFragment"
+        android:label="CustomerFragment"
+        tools:layout="@layout/fragment_customer">
+        <action
+            android:id="@+id/action_customerFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.itsamankrsingh.bankingapp.ui.fragment.details.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="customer"
+            app:argType="com.itsamankrsingh.bankingapp.database.Customer" />
+        <action
+            android:id="@+id/action_detailsFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment"
+            app:popUpTo="@id/customerFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_transaction"
+        android:id="@+id/transactionFragment"
+        android:name="com.itsamankrsingh.bankingapp.ui.fragment.transaction.TransactionFragment"
+        android:label="TransactionFragment" >
+        <argument
+            android:name="transferAmount"
+            app:argType="integer" />
+        <argument
+            android:name="customer"
+            app:argType="com.itsamankrsingh.bankingapp.database.Customer" />
+    </fragment>
+</navigation>
