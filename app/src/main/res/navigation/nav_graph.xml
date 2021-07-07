@@ -73,4 +73,9 @@
             app:destination="@id/customerFragment"
             app:popUpTo="@id/customerFragment" />
     </fragment>
+    <fragment
+        tools:layout="@layout/fragment_transaction_record"
+        android:id="@+id/transactionRecordFragment"
+        android:name="com.itsamankrsingh.bankingapp.ui.fragment.transactionRecord.TransactionRecordFragment"
+        android:label="TransactionRecordFragment" />
 </navigation>

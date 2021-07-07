@@ -8,9 +8,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.itsamankrsingh.bankingapp.database.Customer
 import com.itsamankrsingh.bankingapp.database.CustomerDao
+import com.itsamankrsingh.bankingapp.database.TransactionRecord
+import com.itsamankrsingh.bankingapp.database.TransactionRecordDao
 import kotlinx.coroutines.launch
 
-class SuccessfulTransactionViewModel(private val datasource: CustomerDao) : ViewModel() {
+class SuccessfulTransactionViewModel(
+    private val datasource: CustomerDao,
+    private val transactionRecordDatasource: TransactionRecordDao
+) : ViewModel() {
 
     private var _senderCustomer = MutableLiveData<Customer>()
     var senderCustomer: LiveData<Customer> = _senderCustomer
@@ -69,8 +74,33 @@ class SuccessfulTransactionViewModel(private val datasource: CustomerDao) : View
                 "Transaction Declined! You have not sufficient balance.",
                 Toast.LENGTH_LONG
             ).show()
-_navigateToCustomerList.value=true
+            _navigateToCustomerList.value = true
         }
+    }
+
+    fun updateTransactionRecord(
+        context: Context,
+        senderCustomer: Customer,
+        receiverCustomer: Customer,
+        transferAmount: Int
+    ) {
+        val transactionRecord = TransactionRecord(
+            0,
+            senderCustomer.customerName,
+            receiverCustomer.customerName,
+            senderCustomer.customerAccountNumber,
+            receiverCustomer.customerAccountNumber,
+            transferAmount
+        )
+
+        viewModelScope.launch {
+            transactionRecordDatasource.insertTransaction(transactionRecord)
+        }
+        Toast.makeText(
+            context,
+            "Transaction Saved",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     fun updatedSenderCustomer(senderCustomer: Customer) {

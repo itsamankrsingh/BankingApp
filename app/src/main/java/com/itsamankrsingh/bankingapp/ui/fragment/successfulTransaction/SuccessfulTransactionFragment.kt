@@ -33,8 +33,11 @@ class SuccessfulTransactionFragment : Fragment() {
         val receiverCustomer = args.receiverCustomer
 
         val application = requireNotNull(this.activity).application
-        val dataSource = CustomerDatabase.getInstance(application).customerDao
-        val viewModelFactory = SuccessfulTransactionViewModelFactory(dataSource)
+        val databaseInstance = CustomerDatabase.getInstance(application)
+        val customerDatasource = databaseInstance.customerDao
+        val transactionRecordDatasource = databaseInstance.transactionRecordDao
+        val viewModelFactory =
+            SuccessfulTransactionViewModelFactory(customerDatasource, transactionRecordDatasource)
         viewModel = ViewModelProvider(
             this,
             viewModelFactory
@@ -47,7 +50,14 @@ class SuccessfulTransactionFragment : Fragment() {
             transferAmount
         )
 
-        viewModel.navigateToCustomerList.observe(viewLifecycleOwner,{
+        viewModel.updateTransactionRecord(
+            requireContext(),
+            senderCustomer,
+            receiverCustomer,
+            transferAmount
+        )
+
+        viewModel.navigateToCustomerList.observe(viewLifecycleOwner, {
             findNavController().navigate(R.id.action_successfulTransactionFragment_to_customerFragment)
         })
 

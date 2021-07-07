@@ -18,9 +18,12 @@ import com.itsamankrsingh.bankingapp.utils.CustomerDetails.Companion.customer8
 import com.itsamankrsingh.bankingapp.utils.CustomerDetails.Companion.customer9
 import com.itsamankrsingh.bankingapp.utils.ioThread
 
-@Database(entities = [Customer::class],version = 1,exportSchema = false)
+@Database(entities = [Customer::class,TransactionRecord::class],version = 1,exportSchema = false)
 abstract class CustomerDatabase:RoomDatabase() {
+
     abstract val customerDao: CustomerDao
+
+    abstract val transactionRecordDao:TransactionRecordDao
 
     companion object {
 
