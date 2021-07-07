@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.itsamankrsingh.bankingapp.R
 import com.itsamankrsingh.bankingapp.database.CustomerDatabase
 import com.itsamankrsingh.bankingapp.databinding.FragmentSuccessfulTransactionBinding
 
@@ -45,9 +47,15 @@ class SuccessfulTransactionFragment : Fragment() {
             transferAmount
         )
 
+        viewModel.navigateToCustomerList.observe(viewLifecycleOwner,{
+            findNavController().navigate(R.id.action_successfulTransactionFragment_to_customerFragment)
+        })
+
         viewModel.updatedSenderCustomer(senderCustomer)
         viewModel.receiverSenderCustomer(receiverCustomer)
         binding.transferredAmountTextView.text = transferAmount.toString()
+
+
 
 
 

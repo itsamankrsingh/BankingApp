@@ -12,14 +12,15 @@ import kotlinx.coroutines.launch
 
 class SuccessfulTransactionViewModel(private val datasource: CustomerDao) : ViewModel() {
 
-    private  var _senderCustomer= MutableLiveData<Customer>()
+    private var _senderCustomer = MutableLiveData<Customer>()
     var senderCustomer: LiveData<Customer> = _senderCustomer
 
-    private  var _receiverCustomer= MutableLiveData<Customer>()
+    private var _receiverCustomer = MutableLiveData<Customer>()
     var receiverCustomer: LiveData<Customer> = _receiverCustomer
 
 
-
+    private var _navigateToCustomerList = MutableLiveData<Boolean>()
+    var navigateToCustomerList: LiveData<Boolean> = _navigateToCustomerList
 
 
     fun initiateTransaction(
@@ -62,18 +63,25 @@ class SuccessfulTransactionViewModel(private val datasource: CustomerDao) : View
             }
 
             Toast.makeText(context, "Transaction Successful", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(
+                context,
+                "Transaction Declined! You have not sufficient balance.",
+                Toast.LENGTH_LONG
+            ).show()
+_navigateToCustomerList.value=true
         }
     }
 
-    fun updatedSenderCustomer(senderCustomer: Customer){
+    fun updatedSenderCustomer(senderCustomer: Customer) {
         viewModelScope.launch {
-            _senderCustomer.value= datasource.getCustomerById(senderCustomer.id)
+            _senderCustomer.value = datasource.getCustomerById(senderCustomer.id)
         }
     }
 
-    fun receiverSenderCustomer(receiverCustomer: Customer){
+    fun receiverSenderCustomer(receiverCustomer: Customer) {
         viewModelScope.launch {
-            _receiverCustomer.value= datasource.getCustomerById(receiverCustomer.id)
+            _receiverCustomer.value = datasource.getCustomerById(receiverCustomer.id)
         }
     }
 }
