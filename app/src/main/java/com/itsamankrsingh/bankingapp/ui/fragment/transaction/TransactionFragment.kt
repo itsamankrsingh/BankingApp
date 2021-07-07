@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.itsamankrsingh.bankingapp.R
 import com.itsamankrsingh.bankingapp.database.CustomerDatabase
@@ -16,9 +17,9 @@ import com.itsamankrsingh.bankingapp.ui.fragment.CustomerItemClickListener
 
 class TransactionFragment : Fragment() {
 
-    private lateinit var binding:FragmentTransactionBinding
+    private lateinit var binding: FragmentTransactionBinding
 
-    private lateinit var viewModel:TransactionViewModel
+    private lateinit var viewModel: TransactionViewModel
 
     private val args by navArgs<TransactionFragmentArgs>()
 
@@ -27,7 +28,7 @@ class TransactionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding= FragmentTransactionBinding.inflate(inflater)
+        binding = FragmentTransactionBinding.inflate(inflater)
 
         val amount = args.transferAmount
         val senderCustomer = args.customer
@@ -40,8 +41,14 @@ class TransactionFragment : Fragment() {
 
         viewModel.showCustomerList()
 
-        val adapter = CustomerAdapter(CustomerItemClickListener {
-
+        val adapter = CustomerAdapter(CustomerItemClickListener { receiverCustomer ->
+            val action =
+                TransactionFragmentDirections.actionTransactionFragmentToSuccessfulTransactionFragment(
+                    senderCustomer,
+                    receiverCustomer,
+                    amount
+                )
+            findNavController().navigate(action)
         })
         binding.transactionRecyclerView.adapter = adapter
 

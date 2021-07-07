@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/customerFragment"
         android:name="com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerFragment"
-        android:label="CustomerFragment"
+        android:label="Customer List"
         tools:layout="@layout/fragment_customer">
         <action
             android:id="@+id/action_customerFragment_to_detailsFragment"
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.itsamankrsingh.bankingapp.ui.fragment.details.DetailsFragment"
-        android:label="DetailsFragment"
+        android:label="Customer Detail"
         tools:layout="@layout/fragment_details">
         <argument
             android:name="customer"
@@ -29,18 +29,44 @@
         <action
             android:id="@+id/action_detailsFragment_to_transactionFragment"
             app:destination="@id/transactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/customerFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_transaction"
         android:id="@+id/transactionFragment"
         android:name="com.itsamankrsingh.bankingapp.ui.fragment.transaction.TransactionFragment"
-        android:label="TransactionFragment" >
+        android:label="Transaction Status"
+        tools:layout="@layout/fragment_transaction">
         <argument
             android:name="transferAmount"
             app:argType="integer" />
         <argument
             android:name="customer"
             app:argType="com.itsamankrsingh.bankingapp.database.Customer" />
+        <action
+            android:id="@+id/action_transactionFragment_to_successfulTransactionFragment"
+            app:destination="@id/successfulTransactionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/customerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfulTransactionFragment"
+        android:name="com.itsamankrsingh.bankingapp.ui.fragment.successfulTransaction.SuccessfulTransactionFragment"
+        android:label="Transaction Successful"
+        tools:layout="@layout/fragment_successful_transaction">
+        <argument
+            android:name="senderCustomer"
+            app:argType="com.itsamankrsingh.bankingapp.database.Customer" />
+        <argument
+            android:name="receiverCustomer"
+            app:argType="com.itsamankrsingh.bankingapp.database.Customer" />
+        <argument android:name="transferAmount"
+            app:argType="integer" />
     </fragment>
 </navigation>
