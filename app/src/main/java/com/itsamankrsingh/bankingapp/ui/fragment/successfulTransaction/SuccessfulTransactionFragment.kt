@@ -50,14 +50,11 @@ class SuccessfulTransactionFragment : Fragment() {
             transferAmount
         )
 
-        viewModel.updateTransactionRecord(
-            requireContext(),
-            senderCustomer,
-            receiverCustomer,
-            transferAmount
-        )
+
+
 
         viewModel.navigateToCustomerList.observe(viewLifecycleOwner, {
+
             findNavController().navigate(R.id.action_successfulTransactionFragment_to_customerFragment)
         })
 

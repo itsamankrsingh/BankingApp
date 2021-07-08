@@ -1,60 +1,67 @@
 package com.itsamankrsingh.bankingapp.ui.fragment.transactionRecord
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.FragmentTransitionImpl
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.itsamankrsingh.bankingapp.R
+import com.itsamankrsingh.bankingapp.database.CustomerDatabase
+import com.itsamankrsingh.bankingapp.database.TransactionRecord
+import com.itsamankrsingh.bankingapp.databinding.FragmentTransactionBinding
+import com.itsamankrsingh.bankingapp.databinding.FragmentTransactionRecordBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [TransactionRecordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TransactionRecordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentTransactionRecordBinding
+
+    private lateinit var viewModel: TransactionRecordViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_transaction_record, container, false)
+        binding = FragmentTransactionRecordBinding.inflate(inflater)
+        val application = requireNotNull(this.activity).application
+        val dataSource = CustomerDatabase.getInstance(application).transactionRecordDao
+        val viewModelFactory = TransactionRecordViewModelFactory(dataSource)
+
+        viewModel =
+            ViewModelProvider(this, viewModelFactory).get(TransactionRecordViewModel::class.java)
+
+        val adapter = TransactionRecordAdapter(TransactionRecordClickListener { transactionRecord ->
+            viewModel.openDeleteTransactionRecordDialogBox(requireContext(), transactionRecord)
+        })
+
+        binding.transactionRecordRecyclerView.adapter = adapter
+
+        viewModel.transactionRecordList.observe(
+            viewLifecycleOwner,
+            Observer { transactionRecordList ->
+                adapter.submitList(transactionRecordList)
+            })
+
+        binding.viewModel = viewModel
+
+        setHasOptionsMenu(true)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TransactionRecordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TransactionRecordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.delete_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==R.id.delete_all){
+            viewModel.deleteAllTransaction(requireContext())
+        }
+        return false
     }
 }

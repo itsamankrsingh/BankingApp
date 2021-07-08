@@ -13,5 +13,6 @@ data class TransactionRecord(
     val receiverCustomerName: String,
     val senderAccountNumber: String,
     val receiverAccountNumber: String,
-    val transferredAmount: Int
+    val transferredAmount: Int,
+    val status:String
 )

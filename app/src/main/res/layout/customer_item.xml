@@ -9,7 +9,7 @@
             type="com.itsamankrsingh.bankingapp.database.Customer" />
         <variable
             name="clicklistener"
-            type="com.itsamankrsingh.bankingapp.ui.fragment.CustomerItemClickListener" />
+            type="com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerItemClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

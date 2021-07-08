@@ -17,6 +17,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_customerFragment_to_transactionRecordFragment"
+            app:destination="@id/transactionRecordFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -71,11 +78,15 @@
         <action
             android:id="@+id/action_successfulTransactionFragment_to_customerFragment"
             app:destination="@id/customerFragment"
-            app:popUpTo="@id/customerFragment" />
+            app:popUpTo="@id/customerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         tools:layout="@layout/fragment_transaction_record"
         android:id="@+id/transactionRecordFragment"
         android:name="com.itsamankrsingh.bankingapp.ui.fragment.transactionRecord.TransactionRecordFragment"
-        android:label="TransactionRecordFragment" />
+        android:label="Transaction Record" />
 </navigation>

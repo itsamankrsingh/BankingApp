@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="transactionRecord"
+            type="com.itsamankrsingh.bankingapp.database.TransactionRecord" />
+
+        <variable
+            name="clicklistener"
+            type="com.itsamankrsingh.bankingapp.ui.fragment.transactionRecord.TransactionRecordClickListener" />
     </data>
 
 
@@ -12,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:onClick="@{()->clicklistener.onClick(transactionRecord)}"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:padding="8dp"
+                    android:text="@{transactionRecord.senderCustomerName}"
                     android:textSize="22sp"
                     android:textStyle="italic"
                     tools:text="Chandler Bing" />
@@ -80,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:padding="8dp"
+                    android:text="@{transactionRecord.receiverCustomerName}"
                     android:textSize="22sp"
                     android:textStyle="italic"
                     tools:text="Joey Tribbiani" />
@@ -111,6 +121,39 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:padding="8dp"
+                    android:text="@{Integer.toString(transactionRecord.transferredAmount)}"
+                    android:textSize="22sp"
+                    android:textStyle="italic"
+                    tools:text="999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/transfer_status_linear_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/transfer_amount_linear_layout">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Status:"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/transfer_status_record_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="@{transactionRecord.status}"
                     android:textSize="22sp"
                     android:textStyle="italic"
                     tools:text="999" />

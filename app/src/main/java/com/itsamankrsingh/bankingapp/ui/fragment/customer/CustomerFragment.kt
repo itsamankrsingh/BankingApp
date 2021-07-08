@@ -1,16 +1,15 @@
 package com.itsamankrsingh.bankingapp.ui.fragment.customer
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.itsamankrsingh.bankingapp.R
 import com.itsamankrsingh.bankingapp.database.CustomerDatabase
 import com.itsamankrsingh.bankingapp.databinding.FragmentCustomerBinding
-import com.itsamankrsingh.bankingapp.ui.fragment.CustomerAdapter
-import com.itsamankrsingh.bankingapp.ui.fragment.CustomerItemClickListener
+import com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerAdapter
+import com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerItemClickListener
 
 
 class CustomerFragment : Fragment() {
@@ -44,9 +43,21 @@ class CustomerFragment : Fragment() {
             }
 
         })
+        setHasOptionsMenu(true)
         binding.viewmodel = viewModel
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==R.id.transactionRecordFragment){
+            findNavController().navigate(R.id.action_customerFragment_to_transactionRecordFragment)
+        }
+        return true
+    }
 
 }

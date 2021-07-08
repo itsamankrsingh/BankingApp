@@ -11,8 +11,8 @@ import androidx.navigation.fragment.navArgs
 import com.itsamankrsingh.bankingapp.R
 import com.itsamankrsingh.bankingapp.database.CustomerDatabase
 import com.itsamankrsingh.bankingapp.databinding.FragmentTransactionBinding
-import com.itsamankrsingh.bankingapp.ui.fragment.CustomerAdapter
-import com.itsamankrsingh.bankingapp.ui.fragment.CustomerItemClickListener
+import com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerAdapter
+import com.itsamankrsingh.bankingapp.ui.fragment.customer.CustomerItemClickListener
 
 
 class TransactionFragment : Fragment() {

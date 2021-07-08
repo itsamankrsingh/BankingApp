@@ -67,40 +67,56 @@ class SuccessfulTransactionViewModel(
                 datasource.updateCustomer(receiverCustomerUpdate)
             }
 
-            Toast.makeText(context, "Transaction Successful", Toast.LENGTH_SHORT).show()
+            val transactionRecord = TransactionRecord(
+                0,
+                senderCustomerUpdate.customerName,
+                receiverCustomerUpdate.customerName,
+                senderCustomerUpdate.customerAccountNumber,
+                receiverCustomerUpdate.customerAccountNumber,
+                transferAmount,
+                "Success"
+            )
+
+            updateSuccessfulTransactionRecord(transactionRecord)
+
+            Toast.makeText(context, "Transaction Successful!", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(
                 context,
                 "Transaction Declined! You have not sufficient balance.",
                 Toast.LENGTH_LONG
             ).show()
+
+            val transactionRecord = TransactionRecord(
+                0,
+                senderCustomer.customerName,
+                receiverCustomer.customerName,
+                senderCustomer.customerAccountNumber,
+                receiverCustomer.customerAccountNumber,
+                transferAmount,
+                "Failure"
+            )
+
+            updateFailureTransactionRecord(transactionRecord)
             _navigateToCustomerList.value = true
         }
     }
 
-    fun updateTransactionRecord(
-        context: Context,
-        senderCustomer: Customer,
-        receiverCustomer: Customer,
-        transferAmount: Int
+    private fun updateSuccessfulTransactionRecord(
+        transactionRecord: TransactionRecord
     ) {
-        val transactionRecord = TransactionRecord(
-            0,
-            senderCustomer.customerName,
-            receiverCustomer.customerName,
-            senderCustomer.customerAccountNumber,
-            receiverCustomer.customerAccountNumber,
-            transferAmount
-        )
+        viewModelScope.launch {
+            transactionRecordDatasource.insertTransaction(transactionRecord)
+        }
+    }
+
+    private fun updateFailureTransactionRecord(
+        transactionRecord: TransactionRecord
+    ) {
 
         viewModelScope.launch {
             transactionRecordDatasource.insertTransaction(transactionRecord)
         }
-        Toast.makeText(
-            context,
-            "Transaction Saved",
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     fun updatedSenderCustomer(senderCustomer: Customer) {

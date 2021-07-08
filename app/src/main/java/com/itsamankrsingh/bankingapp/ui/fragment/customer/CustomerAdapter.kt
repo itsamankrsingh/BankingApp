@@ -1,4 +1,4 @@
-package com.itsamankrsingh.bankingapp.ui.fragment
+package com.itsamankrsingh.bankingapp.ui.fragment.customer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
