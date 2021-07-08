@@ -9,224 +9,251 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.details.DetailsFragment">
+        android:background="#C1D1E1">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/details_image_view"
-            android:layout_width="0dp"
-            android:layout_height="156dp"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_person"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/name_linear_layout"
-            android:layout_width="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/details_image_view">
+            app:cardCornerRadius="56dp"
+            app:cardElevation="8dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Name:"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.fragment.details.DetailsFragment">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/details_customer_name_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textSize="22sp"
-                android:textStyle="italic"
-                tools:text="Aman Kumar Singh" />
-        </LinearLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/details_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="156dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_person"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/account_number_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_linear_layout">
+                <LinearLayout
+                    android:id="@+id/name_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/details_image_view">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:padding="8dp"
-                android:text="Account No:"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="Name:"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/details_account_number_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textSize="22sp"
-                android:textStyle="italic"
-                tools:text="0123456789" />
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/details_customer_name_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="italic"
+                        tools:text="Aman Kumar Singh" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/email_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/account_number_linear_layout">
+                <LinearLayout
+                    android:id="@+id/account_number_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name_linear_layout">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Email:"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:padding="8dp"
+                        android:text="Account No:"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/details_email_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textSize="22sp"
-                android:textStyle="italic"
-                tools:text="itsamankrsingh@gmail.com" />
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/details_account_number_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="italic"
+                        tools:text="0123456789" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ifsc_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email_linear_layout">
+                <LinearLayout
+                    android:id="@+id/email_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_number_linear_layout">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:padding="8dp"
-                android:text="IFSC Code:"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="Email:"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/details_ifsc_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textSize="22sp"
-                android:textStyle="italic"
-                tools:text="0123456789" />
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/details_email_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="italic"
+                        tools:text="itsamankrsingh@gmail.com" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/mobile_number_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ifsc_linear_layout">
+                <LinearLayout
+                    android:id="@+id/ifsc_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email_linear_layout">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:padding="8dp"
-                android:text="Mobile No:"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:padding="8dp"
+                        android:text="IFSC Code:"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/details_mobile_number_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textSize="22sp"
-                android:textStyle="italic"
-                tools:text="0123456789" />
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/details_ifsc_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="italic"
+                        tools:text="0123456789" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/account_balance_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mobile_number_linear_layout">
+                <LinearLayout
+                    android:id="@+id/mobile_number_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ifsc_linear_layout">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:padding="8dp"
-                android:text="Balance:"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:padding="8dp"
+                        android:text="Mobile No:"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/details_account_balance_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:padding="8dp"
-                android:textSize="22sp"
-                android:textStyle="italic"
-                tools:text="0123456789" />
-        </LinearLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/details_mobile_number_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="italic"
+                        tools:text="0123456789" />
+                </LinearLayout>
 
-        <Button
-            android:id="@+id/transfer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Transfer"
-            android:textAllCaps="false"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/account_balance_linear_layout" />
+                <LinearLayout
+                    android:id="@+id/account_balance_linear_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mobile_number_linear_layout">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:padding="8dp"
+                        android:text="Balance:"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/details_account_balance_text_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="italic"
+                        tools:text="0123456789" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/transfer_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/round_button"
+                    android:drawableEnd="@drawable/ic_arrow_forward"
+                    android:padding="8dp"
+                    android:text="Transfer"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_balance_linear_layout" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
     </ScrollView>
 </layout>

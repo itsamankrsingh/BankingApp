@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="customerViewmodel"
             type="com.itsamankrsingh.bankingapp.ui.fragment.successfulTransaction.SuccessfulTransactionViewModel" />
@@ -11,45 +12,29 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="#C1D1E1">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ui.fragment.SuccessfullTransactionFragment">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="@string/transaction_successful"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_margin="16dp"
+            app:cardCornerRadius="46dp"
+            app:cardElevation="8dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/sender_info"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/title">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.fragment.SuccessfullTransactionFragment">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/title_sender_info"
+                    android:id="@+id/title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:gravity="start"
+                    android:gravity="center"
                     android:padding="4dp"
-                    android:text="@string/sender_info"
+                    android:text="@string/transaction_successful"
                     android:textColor="@color/black"
                     android:textSize="26sp"
                     android:textStyle="bold"
@@ -57,8 +42,252 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sender_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title_sender_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:padding="4dp"
+                        android:text="@string/sender_info"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/name_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/title_sender_info">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Name:"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/sender_customer_name_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="8dp"
+                            android:text="@{customerViewmodel.senderCustomer.customerName}"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:text="Aman Kumar Singh" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/account_number_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/name_linear_layout">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="8dp"
+                            android:text="Account No:"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/sender_account_number_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="8dp"
+                            android:text="@{customerViewmodel.senderCustomer.customerAccountNumber}"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:text="0123456789" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/account_balance_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/account_number_linear_layout">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="8dp"
+                            android:text="Balance:"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/sender_account_balance_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="8dp"
+                            android:text="@{Integer.toString(customerViewmodel.senderCustomer.accountBalance)}"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:text="0123456789" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/receiver_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sender_info">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title_receiver_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:padding="4dp"
+                        android:text="@string/receiver_info"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/receiver_name_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/title_receiver_info">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="8dp"
+                            android:text="Name:"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/receiver_customer_name_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="8dp"
+                            android:text="@{customerViewmodel.receiverCustomer.customerName}"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:text="Aman Kumar Singh" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/receiver_account_number_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/receiver_name_linear_layout">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="8dp"
+                            android:text="Account No:"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/receiver_account_number_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="8dp"
+                            android:text="@{customerViewmodel.receiverCustomer.customerAccountNumber}"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:text="0123456789" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/receiver_account_balance_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/receiver_account_number_linear_layout">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="8dp"
+                            android:text="Balance:"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/receiver_account_balance_text_view"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:padding="8dp"
+                            android:text="@{Integer.toString(customerViewmodel.receiverCustomer.accountBalance)}"
+                            android:textSize="22sp"
+                            android:textStyle="italic"
+                            tools:text="0123456789" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <LinearLayout
-                    android:id="@+id/name_linear_layout"
+                    android:id="@+id/amount_linear_layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
@@ -66,249 +295,30 @@
                     android:weightSum="4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_sender_info">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="8dp"
-                        android:text="Name:"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/sender_customer_name_text_view"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="@{customerViewmodel.senderCustomer.customerName}"
-                        android:padding="8dp"
-                        android:textSize="22sp"
-                        android:textStyle="italic"
-                        tools:text="Aman Kumar Singh" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/account_number_linear_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/name_linear_layout">
+                    app:layout_constraintTop_toBottomOf="@id/receiver_info">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:padding="8dp"
-                        android:text="Account No:"
+                        android:text="Transferred Amount:"
                         android:textSize="22sp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/sender_account_number_text_view"
+                        android:id="@+id/transferred_amount_text_view"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:padding="8dp"
-                        android:text="@{customerViewmodel.senderCustomer.customerAccountNumber}"
                         android:textSize="22sp"
                         android:textStyle="italic"
                         tools:text="0123456789" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/account_balance_linear_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/account_number_linear_layout">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:padding="8dp"
-                        android:text="Balance:"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/sender_account_balance_text_view"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:padding="8dp"
-                        android:text="@{Integer.toString(customerViewmodel.senderCustomer.accountBalance)}"
-                        android:textSize="22sp"
-                        android:textStyle="italic"
-                        tools:text="0123456789" />
-                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/receiver_info"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sender_info">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/title_receiver_info"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="start"
-                    android:padding="4dp"
-                    android:text="@string/receiver_info"
-                    android:textColor="@color/black"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/receiver_name_linear_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_receiver_info">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="8dp"
-                        android:text="Name:"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/receiver_customer_name_text_view"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:padding="8dp"
-                        android:text="@{customerViewmodel.receiverCustomer.customerName}"
-                        android:textSize="22sp"
-                        android:textStyle="italic"
-                        tools:text="Aman Kumar Singh" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/receiver_account_number_linear_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/receiver_name_linear_layout">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:padding="8dp"
-                        android:text="Account No:"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/receiver_account_number_text_view"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:padding="8dp"
-                        android:text="@{customerViewmodel.receiverCustomer.customerAccountNumber}"
-                        android:textSize="22sp"
-                        android:textStyle="italic"
-                        tools:text="0123456789" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/receiver_account_balance_linear_layout"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:orientation="horizontal"
-                    android:weightSum="4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/receiver_account_number_linear_layout">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:padding="8dp"
-                        android:text="Balance:"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/receiver_account_balance_text_view"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:padding="8dp"
-                        android:text="@{Integer.toString(customerViewmodel.receiverCustomer.accountBalance)}"
-                        android:textSize="22sp"
-                        android:textStyle="italic"
-                        tools:text="0123456789" />
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/amount_linear_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:orientation="horizontal"
-                android:weightSum="4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/receiver_info">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:padding="8dp"
-                    android:text="Transferred Amount:"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/transferred_amount_text_view"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:padding="8dp"
-                    android:textSize="22sp"
-                    android:textStyle="italic"
-                    tools:text="0123456789" />
-            </LinearLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
     </ScrollView>
 </layout>

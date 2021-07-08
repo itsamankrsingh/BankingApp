@@ -24,8 +24,8 @@ class SuccessfulTransactionViewModel(
     var receiverCustomer: LiveData<Customer> = _receiverCustomer
 
 
-    private var _navigateToCustomerList = MutableLiveData<Boolean>()
-    var navigateToCustomerList: LiveData<Boolean> = _navigateToCustomerList
+    private var _navigateToHomeScreen = MutableLiveData<Boolean>()
+    var navigateToHomeScreen: LiveData<Boolean> = _navigateToHomeScreen
 
 
     fun initiateTransaction(
@@ -74,7 +74,7 @@ class SuccessfulTransactionViewModel(
                 senderCustomerUpdate.customerAccountNumber,
                 receiverCustomerUpdate.customerAccountNumber,
                 transferAmount,
-                "Success"
+                true
             )
 
             updateSuccessfulTransactionRecord(transactionRecord)
@@ -94,11 +94,11 @@ class SuccessfulTransactionViewModel(
                 senderCustomer.customerAccountNumber,
                 receiverCustomer.customerAccountNumber,
                 transferAmount,
-                "Failure"
+                false
             )
 
             updateFailureTransactionRecord(transactionRecord)
-            _navigateToCustomerList.value = true
+            _navigateToHomeScreen.value = true
         }
     }
 

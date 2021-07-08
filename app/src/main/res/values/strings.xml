@@ -8,4 +8,6 @@
     <string name="transaction_successful">Transaction successful</string>
     <string name="sender_info">Sender Info:</string>
     <string name="receiver_info">Receiver Info:</string>
+    <string name="success">Success</string>
+    <string name="failure">Failure</string>
 </resources>

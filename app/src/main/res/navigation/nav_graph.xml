@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/customerFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/customerFragment"
@@ -17,13 +17,6 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            android:id="@+id/action_customerFragment_to_transactionRecordFragment"
-            app:destination="@id/transactionRecordFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -60,7 +53,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
-            app:popUpTo="@id/customerFragment" />
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_transactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/successfulTransactionFragment"
@@ -73,20 +69,40 @@
         <argument
             android:name="receiverCustomer"
             app:argType="com.itsamankrsingh.bankingapp.database.Customer" />
-        <argument android:name="transferAmount"
+        <argument
+            android:name="transferAmount"
             app:argType="integer" />
         <action
-            android:id="@+id/action_successfulTransactionFragment_to_customerFragment"
-            app:destination="@id/customerFragment"
-            app:popUpTo="@id/customerFragment"
+            android:id="@+id/action_successfulTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_transaction_record"
         android:id="@+id/transactionRecordFragment"
         android:name="com.itsamankrsingh.bankingapp.ui.fragment.transactionRecord.TransactionRecordFragment"
-        android:label="Transaction Record" />
+        android:label="Transaction Record"
+        tools:layout="@layout/fragment_transaction_record" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.itsamankrsingh.bankingapp.ui.fragment.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_customerFragment"
+            app:destination="@id/customerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_transactionRecordFragment"
+            app:destination="@id/transactionRecordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 </navigation>

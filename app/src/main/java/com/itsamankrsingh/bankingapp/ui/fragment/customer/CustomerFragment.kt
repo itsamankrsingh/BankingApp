@@ -43,21 +43,11 @@ class CustomerFragment : Fragment() {
             }
 
         })
-        setHasOptionsMenu(true)
+
         binding.viewmodel = viewModel
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu,menu)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId==R.id.transactionRecordFragment){
-            findNavController().navigate(R.id.action_customerFragment_to_transactionRecordFragment)
-        }
-        return true
-    }
 
 }

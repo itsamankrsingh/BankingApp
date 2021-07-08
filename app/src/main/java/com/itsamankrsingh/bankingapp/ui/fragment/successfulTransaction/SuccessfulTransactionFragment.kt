@@ -53,9 +53,9 @@ class SuccessfulTransactionFragment : Fragment() {
 
 
 
-        viewModel.navigateToCustomerList.observe(viewLifecycleOwner, {
+        viewModel.navigateToHomeScreen.observe(viewLifecycleOwner, {
 
-            findNavController().navigate(R.id.action_successfulTransactionFragment_to_customerFragment)
+            findNavController().navigate(R.id.action_successfulTransactionFragment_to_homeFragment)
         })
 
         viewModel.updatedSenderCustomer(senderCustomer)

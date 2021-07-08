@@ -14,5 +14,5 @@ data class TransactionRecord(
     val senderAccountNumber: String,
     val receiverAccountNumber: String,
     val transferredAmount: Int,
-    val status:String
+    val status:Boolean
 )
